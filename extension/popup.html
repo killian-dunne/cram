@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="title">Mailchimp:</div>
+    <div class="contents">
+      <div id="summary"></div>
+      <div class="loading-container">
+        <div class="loading">
+          <img src="./images/C.png" alt="loading" />
+        </div>
+      </div>
+    </div>
+    <div class="end">
+      <div class="icons">
+        <img src="./images/restart.svg" alt="restart" class="icon" />
+        <img src="./images/share.svg" alt="share" class="icon" />
+      </div>
+      <div class="cram">
+        Powered by
+        <a href="https://mailchimp.com/" target="_blank"
+          ><img
+            src="./images/CRAM.png"
+            alt="Cram!"
+            style="margin-left: 2px; height: 30px"
+        /></a>
+      </div>
+    </div>
+    <script src="./popup.js" type="module"></script>
+  </body>
+</html>

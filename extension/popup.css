@@ -1,0 +1,87 @@
+html,
+body {
+  height: 450px;
+  width: 350px;
+  max-width: 350px;
+  border-radius: 8px;
+  font-family: "Fredoka", cursive;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding-bottom: 10px;
+}
+
+.title {
+  font-size: 30px;
+  width: 310px;
+}
+
+.contents {
+  flex: 1;
+  width: 310px;
+  display: flex;
+  font-size: 15px;
+  line-height: 1.1em;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #4a4a4a;
+  padding-bottom: 20px;
+  font-weight: 300;
+}
+
+.end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 310px;
+}
+
+.icon {
+  margin-right: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 20px;
+  width: 20px;
+  padding: 4px;
+}
+
+.icon:hover {
+  background-color: #e8e8e8;
+}
+
+.cram {
+  align-items: center;
+  display: flex;
+  color: #b8b8b8;
+  font-weight: 300;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  animation: rotate 1s linear infinite;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

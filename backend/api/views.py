@@ -5,6 +5,16 @@ import openai
 import os
 
 
+def clean_result(text):
+    if not isinstance(text, str):
+        return text
+    if not text.endswith('.') and '.' in text:
+        # Remove the last sentence
+        text = text.rsplit('.', 1)[0]
+        return text.strip()
+    return text.strip().replace(';', '')
+
+
 class AskOpenAIView(views.APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -29,7 +39,9 @@ class AskOpenAIView(views.APIView):
             )
             if json_response and len(json_response.choices) > 0:
                 text = json_response.choices[0].text
+                text = clean_result(text)
                 print('text', text)
+
                 json_response = {'message': text}
         else:
             json_response = {'message': 'Prompt must be a string.'}

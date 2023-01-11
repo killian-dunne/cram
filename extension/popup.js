@@ -11,10 +11,26 @@ function updatePopup(content) {
   loadingDiv.style.display = "none";
 }
 
-chrome.runtime.sendMessage({
-  action: "popupOpened",
-  content: true,
-});
+function sendToApi() {
+  chrome.runtime.sendMessage({
+    action: "hitApi",
+    content: true,
+  });
+}
+
+sendToApi();
+
+function cleanInput() {
+  const summaryDiv = document.getElementById("summary");
+  summaryDiv.style.display = "none";
+  const loadingDiv = document.querySelector(".loading-container");
+  loadingDiv.style.display = "flex";
+}
+
+function refreshInput() {
+  cleanInput();
+  sendToApi();
+}
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log("got message", request);
@@ -22,4 +38,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // update the popup with the content
     updatePopup(request.content);
   }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var link = document.getElementById("refresh");
+  // onClick's logic below:
+  link.addEventListener("click", function () {
+    refreshInput();
+  });
 });

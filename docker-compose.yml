@@ -18,7 +18,8 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - DJANGO_SETTINGS_MODULE=cram.settings
-      - OPENAI_API_KEY=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
+      - DJANGO_SETTINGS_MODULE=cram.settings.prod
+      - OPENAI_API_KEY=secret
+      - SECRET_KEY=secret
     depends_on:
       - db

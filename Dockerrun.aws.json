@@ -1,0 +1,13 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "731776764063.dkr.ecr.eu-west-1.amazonaws.com/cram-prod:latest",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": 80,
+      "HostPort": 80
+    }
+  ]
+}

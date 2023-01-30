@@ -1,8 +1,15 @@
 from django.shortcuts import render
 from rest_framework import views, response, permissions
-from .serializers import AskOpenAISerializer
-import openai
+from .serializers import SummarizeWebPageSerializer, SummarizeYouTubeSerializer
+import random
+import string
 import os
+import openai
+import google_auth_oauthlib
+import googleapiclient.discovery
+import googleapiclient
+from googleapiclient.http import MediaIoBaseDownload
+scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 
 
 def clean_result(text):
@@ -15,13 +22,13 @@ def clean_result(text):
     return text.strip().replace(';', '')
 
 
-class AskOpenAIView(views.APIView):
+class SummarizeWebPage(views.APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
         openai.api_key = os.environ.get('OPENAI_API_KEY')
 
-        serializer = AskOpenAISerializer(data=request.data)
+        serializer = SummarizeWebPageSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         prompt = serializer.validated_data['prompt']
         if isinstance(prompt, str):
